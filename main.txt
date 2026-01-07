@@ -1,0 +1,10 @@
+A collection of devices built around an ESP8266 that are able to sense the strength of each others WiFi (RSSI) as a sort of proximity sensor. When in close enough proximity, the devices activate and play a sound, tone, beating tone, light, or haptics (,?). The concept branches from there:
+- In one version, the devices are essentially all peers, and somewhat generically activate when they're near each other
+- They could also be given unique identifiers and react differently based on which device is activating them
+- They could each have a unique beat that gets closer to a median as they get closer
+-- A more complex version could include knobs and buttons for users to adjust the volume, tone frequency, beat frequency and/or timing pause to match others. Could also build some of this into the device as an automatic response
+- There could also be a distinction amongst the devices, some that are in fixed locations "flowers" of sorts that don't do much on their own, and "bees" which are dynamic and move with people.
+-- Larger groups could cause different effects, and shifting groups. Each identified "bee" could cause the flower to act in different ways too
+
+
+Items that stick to participants, or can be stuck to unwilling participants -- think Weenie stickers; they react in some way when the wearer passes too close to something or through something
