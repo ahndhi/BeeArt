@@ -6,5 +6,38 @@ A collection of devices built around an ESP8266 that are able to sense the stren
 - There could also be a distinction amongst the devices, some that are in fixed locations "flowers" of sorts that don't do much on their own, and "bees" which are dynamic and move with people.
 -- Larger groups could cause different effects, and shifting groups. Each identified "bee" could cause the flower to act in different ways too
 
+---------
 
 Items that stick to participants, or can be stuck to unwilling participants -- think Weenie stickers; they react in some way when the wearer passes too close to something or through something
+
+
+An old man is running errands. Most seem quite banal, but structure them in a way that they seem sketch once you know the whole story.
+A few scenes in shops, then him with his bundles, riding a bus.
+Back at his apartment/home, we see him prepare these ingredients into an incense, a ceremonial wash, and eventually a sacrifice.
+He performs a dark ritual, and is consumed by the spirit he summons.
+The end.
+
+----------
+
+Thoughts on things to do with the space:
+
+Electronics for artists - The goal is not to produce EEs, but to give people enough tools to help them get started and help them help themselves. Try to focus on practical knowledge instead of theory
+- Components - what are they, how to read them, where to get them
+- Circuit basics - reading schematics, bread boarding, what's a circuit?, requirements, and some basic circuits that come up a lot, soldering!!!
+- Switches, especially tied into Power and Relays
+- Power and safety - controlling large loads, power supplies, batteries and charging systems
+- LEDs, blink 'em, sequence 'em, do a whole bunch, do a few, blow them up
+- 555s, Low frequency on up through audio, using them as a timing signal for things like a 4017
+- Motors and movement, types, methods of control
+- Other lighting - incandescent, EL and odd balls
+- Pre-built modules - how to find them, what are they good for
+- Noise! APC, and ArtInst oscilators, contact mics, mic everything, DIY transducers
+- MCUs, Arduino is a good start, ESPs are also fun, displays and other outputs, PWM i2c
+
+Consider a few different classes, at least a basic/intro and something more advanced
+- Transducers could easily be a whole class, as could MCUs
+- Project based classes, APC, color changing light based on ESP thing, DIY guitar pickups, Contact mics
+
+Clubs
+- Game makers meet up, monthly seems like plenty, brags/news, maybe do a presentation once a meeting, social time, and games to follow
+- Tinkerer's Club, hack and electronics type meet up, circuit bending, show-and-tell, offer supplies and access to some of my resources like oscilloscope, and soldering iron
