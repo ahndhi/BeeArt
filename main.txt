@@ -41,3 +41,32 @@ Consider a few different classes, at least a basic/intro and something more adva
 Clubs
 - Game makers meet up, monthly seems like plenty, brags/news, maybe do a presentation once a meeting, social time, and games to follow
 - Tinkerer's Club, hack and electronics type meet up, circuit bending, show-and-tell, offer supplies and access to some of my resources like oscilloscope, and soldering iron
+
+
+Electronics for artists - The goal is not to produce EEs, but to give people enough tools to help them get started and help them help themselves. Try to focus on practical knowledge instead of theory
+- Power and safety - power supplies, batteries, SAFETY
+- Circuit basics - what's a circuit?, requirements, Ohms Law
+- Components - what are they, how to read them, basic overview of them and how we'll use them
+Finish with a 555 blinker on the breadboard with a ldr
+
+- Circuit basics - reading schematics, bread boarding
+- LEDs, blink 'em, sequence 'em, do a whole bunch, do a few, blow them up
+- Other lighting - incandescent, EL and odd balls
+- 555s, Low frequency
+
+- Circuit basics - reading schematics, bread boarding, and some basic circuits that come up a lot
+- 555s, audio, using them as a timing signal for things like a 4017, online calculators
+- Noise! APC
+
+- PWM
+- Transistors as switches, controlling large loads
+- Motors and movement, types, methods of control
+- Circuit basics - reading schematics, bread boarding, and some basic circuits that come up a lot, Pre-built modules - how to find them, what are they good for
+
+- Noise! In a bigger way, ArtInst oscilators, contact mics, mic everything, DIY transducers, amps and classes of amp, op amps, transistors in audio circuits
+- analog v digital
+- MCUs, Arduino is a good start, ESPs are also fun, displays and other outputs, PWM i2c
+
+- Power and safety - power supplies, battery charging systems
+- Switches, especially tied into Power and Relays
+- Circuit basics - breadboard to circuit, soldering!!!
