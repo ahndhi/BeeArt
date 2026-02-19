@@ -21,7 +21,7 @@ Electronics for artists - The goal is not to produce EEs, but to give people eno
 
 Consider a few different classes, at least a basic/intro and something more advanced
 - Transducers could easily be a whole class, as could MCUs
-- Project based classes, APC, color changing light based on ESP thing, DIY guitar pickups, Contact mics
+- Project based classes, APC, color changing light based on ESP thing, DIY guitar pickups, Contact mics, amplifiers, pedals and filters
 
 Clubs
 - Game makers meet up, monthly seems like plenty, brags/news, maybe do a presentation once a meeting, social time, and games to follow
@@ -74,7 +74,7 @@ Finish with a 555 blinker on the breadboard with a ldr
 - 555s, Low frequency
 
 - Circuit basics - reading schematics, bread boarding, and some basic circuits that come up a lot, reading data sheets
-- 555s, audio, using them as a timing signal for things like a 4017, online calculators
+- 555 and 556 audio
 - Noise! APC
 
 - PWM
