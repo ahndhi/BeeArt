@@ -1,23 +1,8 @@
-A collection of devices built around an ESP8266 that are able to sense the strength of each others WiFi (RSSI) as a sort of proximity sensor. When in close enough proximity, the devices activate and play a sound, tone, beating tone, light, or haptics (,?). The concept branches from there:
-- In one version, the devices are essentially all peers, and somewhat generically activate when they're near each other
-- They could also be given unique identifiers and react differently based on which device is activating them
-- They could each have a unique beat that gets closer to a median as they get closer
--- A more complex version could include knobs and buttons for users to adjust the volume, tone frequency, beat frequency and/or timing pause to match others. Could also build some of this into the device as an automatic response
-- There could also be a distinction amongst the devices, some that are in fixed locations "flowers" of sorts that don't do much on their own, and "bees" which are dynamic and move with people.
--- Larger groups could cause different effects, and shifting groups. Each identified "bee" could cause the flower to act in different ways too
-
----------
-
-Items that stick to participants, or can be stuck to unwilling participants -- think Weenie stickers; they react in some way when the wearer passes too close to something or through something
-
-
 An old man is running errands. Most seem quite banal, but structure them in a way that they seem sketch once you know the whole story.
 A few scenes in shops, then him with his bundles, riding a bus.
 Back at his apartment/home, we see him prepare these ingredients into an incense, a ceremonial wash, and eventually a sacrifice.
 He performs a dark ritual, and is consumed by the spirit he summons.
 The end.
-
-----------
 
 Thoughts on things to do with the space:
 
@@ -42,19 +27,53 @@ Clubs
 - Game makers meet up, monthly seems like plenty, brags/news, maybe do a presentation once a meeting, social time, and games to follow
 - Tinkerer's Club, hack and electronics type meet up, circuit bending, show-and-tell, offer supplies and access to some of my resources like oscilloscope, and soldering iron
 
+I would like to set up a meeting as my scams get worse, not better.
+Chuck Day
+Senior Citizen
+
 
 Electronics for artists - The goal is not to produce EEs, but to give people enough tools to help them get started and help them help themselves. Try to focus on practical knowledge instead of theory
-- Power and safety - power supplies, batteries, SAFETY
-- Circuit basics - what's a circuit?, requirements, Ohms Law
+- SAFETY: DC not AC, low current, lead and burns, Seriously no AC for now
+	Never work on a circuit while power is applied.
+	Do not connect power to a circuit until the circuit is finished and you have carefully checked your work.
+	If you smell anything burning, immediately disconnect the power and examine your circuit to find out what went wrong.
+	Be careful around large capacitors; they can continue to hold voltage long after they are disconnected from power.
+	Be especially careful when you solder because a hot soldering iron can easily burn you.
+	Always work in a well-ventilated space.
+	Have safety equipment such as a fire extinguisher, a first-aid kit, and a phone nearby
+	Keep your work area dry.
+- Power - DC power supplies - wall warts, very common as a stage in larger circuits, batteries, much safer but comes with some limitations, we will get to AC and wall power but the focus will be on low power DC projects
+- Circuit basics - A warning: some of this is going to be hard and boring. I'm mostly plowing throuigh that because the goal is provide you with some practical knowledge, but the more you know, the better you will be at this stuff, and the more you'll be able to accomplish. I strongly recommend doing the work and learning the basics for yourself. At least learn DC circuit theory. It's a little boring, and some of it is kinda hard, but just work through it.
+	https://www.jimfiore.org/Books.html
+	https://ibiblio.org/kuphaldt/electricCircuits/
+	https://www.allaboutcircuits.com/textbook/
+what's a circuit?
+	Requirements - Must be a circuit, work needs to be done, that describes the two most common problems - shorts and open circuits
+	Voltage - Water Pressure, electromotive force
+	Current - Water Volume, literally the number of electrons
+	AC vs DC - power transmission, frequency hZ or cps, phase?, reactance and impedence (just note they are concepts that exist), sound, the concept of zero crossing and negative voltage, different waveforms
+	Circuit Sims - Falstad, easy, fun and free!
+Ohms Law e = i*r, triangle hand trick thing = E/i*r and cover the one you want
 - Components - what are they, how to read them, basic overview of them and how we'll use them
+	Resistors - series, parallel, pure resistance! The turn electricity into heat. Calculate the load on a resistor, markings and meanings
+	Variable Resistors - pots, ldr, many type of sensors
+	Capacitors - series, parallel, hold charge, they pass AC and can remove bias from a signal, however because they have reactance their "resistance" is frequency dependant, markings and meanings
+	Magnetics - when electrons flow they can induce a charge in other nearby materials, this can create fields, additionally magnetic fields can induce charges in wires, by exploiting this properties we can make inductors, the counterpart to capacitors in some ways, mostly all we need to know about them, they come up sometimes, markings and meanings
+	Switches - markings and meanings, relays
+	Wire - it can really, really matter
+	Discrete semiconductors - diodes first and use P/N explanation, transistors: there are a lot of types, but they all pretty much work the same, MOSFET and BJT, switches and amplifiers
+	ICs - Basically just all of these things miniaturized and jammed into a little plastic package
 Finish with a 555 blinker on the breadboard with a ldr
 
 - Circuit basics - reading schematics, bread boarding
+- Source and sink, reading data sheets
 - LEDs, blink 'em, sequence 'em, do a whole bunch, do a few, blow them up
 - Other lighting - incandescent, EL and odd balls
+- Beeping buzzers
+- 4017
 - 555s, Low frequency
 
-- Circuit basics - reading schematics, bread boarding, and some basic circuits that come up a lot
+- Circuit basics - reading schematics, bread boarding, and some basic circuits that come up a lot, reading data sheets
 - 555s, audio, using them as a timing signal for things like a 4017, online calculators
 - Noise! APC
 
@@ -70,3 +89,14 @@ Finish with a 555 blinker on the breadboard with a ldr
 - Power and safety - power supplies, battery charging systems
 - Switches, especially tied into Power and Relays
 - Circuit basics - breadboard to circuit, soldering!!!
+
+
+Bread board
+Wire
+555
+a collection of resistors
+a few pots
+a collection of caps
+a collection of LEDs
+4017
+MOSFET
