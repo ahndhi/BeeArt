@@ -1,0 +1,152 @@
+***Electronics for artists - The goal is not to produce EEs, but to give people enough tools to help them get started and help them help themselves. Try to focus on practical knowledge instead of theory
+
+***SAFETY***:
+	No wall power!
+	We're working low current
+	Lead - it's honestly the bet solder, also electronics in general contain a variety of heavy metal. Wash your hands.
+	Burns are possible, particulrly when soldering
+	Never work on a circuit while power is applied.
+	Do not connect power to a circuit until the circuit is finished and you have carefully checked your work.
+	If you smell anything burning, immediately disconnect the power and examine your circuit to find out what went wrong.
+	Be careful around large capacitors; they can continue to hold voltage long after they are disconnected from power.
+	Be especially careful when you solder because a hot soldering iron can easily burn you.
+	Always work in a well-ventilated space.
+	Have safety equipment such as a fire extinguisher, a first-aid kit, and a phone nearby
+	Keep your work area dry.
+***SI Units***
+	We gotta know 'em:
+	p pico = 	0.000 000 000 001
+	n nano = 	0.000 000 001
+	μ micro = 	0.000 001
+	m milli = 	0.001
+	BASE
+	k kilo = 	1,000
+	M mega = 	1,000,000
+	G giga = 	1,000,000,000
+***Circuit Basics*** A warning: This is the meat and potatoes of electronics, but it is rarely well seasoned. I'm mostly plowing throuigh that because the goal is provide you with some practical knowledge, but the more you know, the better you will be at this stuff, and the more you'll be able to accomplish. I strongly recommend doing the work and learning the basics for yourself. At least learn DC circuit theory. It's a little boring, and some of it is kinda hard, but just work through it.
+	https://www.jimfiore.org/Books.html
+	https://ibiblio.org/kuphaldt/electricCircuits/
+	https://www.allaboutcircuits.com/textbook/
+	Circuit Sims - Falstad, easy, fun and free!
+***What's a circuit?***
+	Requirements - Must be a circuit, work needs to be done even if it's heat, that describes the two most common problems - shorts and open circuits
+	Voltage - Water Pressure, electromotive force, measured in volts, usually somewhat fixed, an actual circuit will "drop" its voltage one way or another, as heat if nothing else
+	Kirchhoff’s Voltage Law says that if you add all the voltage drops in a circuit – you get the voltage of the power supply.
+	Current - Water Volume, literally the number of electrons, measured in amps, usually not fixed, but a circuit will "draw" as much current as it needs
+	Kirchhoff’s current law says: All the current going into a node is equal to all the current that goes out from the node. - “What goes in must come out”
+	Resistance - pretty much everything has a resistance, measured in ohms Ω
+	AC vs DC - Bare bones, what do they look like?
+		AC is good for power transmission
+		Frequency as a general concept
+		Sound
+		Negative voltage
+***Ohms Law***
+	e = i*r
+	They are inherently linked measurements in a circuit
+	triangle hand trick thing = E/i*r and cover the one you want
+	12v = ? * 120Ω - 0.1A
+	? = 500mA * 100kΩ - 50kv
+	6Mv = 3kA * ? - 2000Ω
+	Watts = voltage * amperage
+***Power***
+	DC power supplies - batteries for now, cheap, easy, and safe
+	DC in general is less likely to shock you. We're also focusing on stuff in the milliamp range. 1A will give you a good shock, and anything over 2A can kill.
+	Limits things like motors and "big" projects, but we'll get there.
+	we will get to AC and wall power but the focus will be on low power DC projects
+***Components*** - what are they, how to read them, basic overview of them and how we'll use them
+	Series vs parallel definition
+	Through hole or DIP, SMD is the future, but they're extremely small and not beginner friendly
+	Resistors
+		Pure resistance! little pucks of stuff that conducts electricity, but not well
+		Measured in ohms milli - Mega+ are available, but BASE through Mega are most common
+		Series - additive, handle more power too
+		Parallel - if even R/# if not R = 1/R1 + 1/R2 ... not common
+		Voltage Divider - The voltage mid point of two resistors can be expressed as a percentage of the two resistors, we'll come back to these
+		The turn electricity into heat
+		Calculate the load on a resistor in watts
+		Markings and Meanings https://www.build-electronic-circuits.com/resistor-color-codes/
+	Variable Resistors
+		Potentiometers or pots, rotary or linear, tons of different values, linear or audio taper/log, ganged and switched, usually three terminals - both ends and wiper, makes a voltage divider
+		Light dependant resistors, good old fun, limited
+		Many type of sensors, thermistors, flex, force, linear soft things
+	Capacitors
+		Two plates with a dielectric in-between, when one develops a charge, the other develops a negative charge
+		Measured in Farads, pico - BASE are available, but micro is most common
+		Series - they loose capacitance, it's usually a weird thing to do
+		Parallel - they add, but also not common
+		Can be dangerous as they can hold a charge
+		They pass AC, but not DC
+		Common in everything, ued for filtering and keeping signals nice and clean, smoothing out ripples in current, and timing
+		Some are polarized!
+		Sometimes polarity is noted, usually on electrolytics
+		Ceramics are sometimes coded, usually three numbers the firt two are the value and the third is a multiplier counting up from the pico level. It's sort of dumb. 
+	Magnetics
+		When electrons flow they can induce a charge in other nearby materials, this can create magnetic fields, additionally magnetic fields can induce charges in conductors, by exploiting this properties we can make inductors, the counterpart to capacitors in some ways
+		For now that's mostly all we need to know about them, they come up sometimes
+		Examples include transducers, electromagnets, transformers, and filters
+		Measured in Henrys and sometimes other esoteric things
+	Switches - markings and meanings, relays
+	Wire - it can really, really matter
+	Discrete semiconductors - diodes first and use P/N explanation, LEDs, transistors: there are a lot of types, but they all pretty much work the same, MOSFET and BJT, switches and amplifiers
+	ICs - Basically just all of these things miniaturized and jammed into a little plastic package
+Finish with a 555 blinker on the breadboard with a ldr
+
+
+***Circuit Basics***
+	Reading schematics
+	Bread boarding
+***Power*** - DC power supplies
+	batteries - great option, cheap, plentiful, maany rechargeable options, but buy a decent charger. Battery charging can be pretty sketch, and lithium fires are no joke.
+	wall warts, these days they are switch mode power supplies - much lighter but sometimes noisey and not always good for audio
+	very common as a stage in larger circuits
+	Voltage regulators
+- Source and sink, reading data sheets
+- LEDs, blink 'em, sequence 'em, do a whole bunch, do a few, blow them up
+- Other lighting - incandescent, EL and odd balls
+- Beeping buzzers
+- 4017
+- 555s, Low frequency
+
+
+***Circuit Basics***
+	Some basic circuits that come up a lot
+	Reading data sheets
+- 555 and 556 audio
+	AC vs DC - Bare bones, what do they look like?
+		AC is good for power transmission
+		Frequency hZ or cps
+		RMS
+		Phase
+		Reactance and impedence (just note they are concepts that exist)
+		Sound, but also Noise
+		The concept of zero crossing and negative voltage
+		Different waveforms
+- Noise! APC
+
+
+- PWM
+- Transistors as switches, controlling large loads
+- Motors and movement, types, methods of control
+- Circuit basics - reading schematics, bread boarding, and some basic circuits that come up a lot, Pre-built modules - how to find them, what are they good for
+
+
+- Noise! In a bigger way, ArtInst oscilators, contact mics, mic everything, DIY transducers, amps and classes of amp, op amps, transistors in audio circuits
+- analog v digital
+- They pass AC and can remove bias from a signal, however because they have reactance their "resistance" is frequency dependant, filters
+- MCUs, Arduino is a good start, ESPs are also fun, displays and other outputs, PWM i2c
+
+
+- Power and safety - power supplies, battery charging systems
+- Switches, especially tied into Power and Relays
+- Circuit basics - breadboard to circuit, soldering!!!
+
+
+Bread board
+Wire
+555
+a collection of resistors
+a few pots
+a collection of caps
+a collection of LEDs
+4017
+MOSFET
