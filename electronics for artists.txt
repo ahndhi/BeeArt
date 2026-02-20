@@ -2,14 +2,13 @@
 
 ***SAFETY***:
 	No wall power!
-	We're working low current
-	Lead - it's honestly the bet solder, also electronics in general contain a variety of heavy metal. Wash your hands.
+	We're working with low current
+	Lead - it's honestly the best solder, also electronics in general contain a variety of heavy metals. Wash your hands.
 	Burns are possible, particulrly when soldering
 	Never work on a circuit while power is applied.
 	Do not connect power to a circuit until the circuit is finished and you have carefully checked your work.
 	If you smell anything burning, immediately disconnect the power and examine your circuit to find out what went wrong.
-	Be careful around large capacitors; they can continue to hold voltage long after they are disconnected from power.
-	Be especially careful when you solder because a hot soldering iron can easily burn you.
+	Be careful around large capacitors; they can continue to hold voltage long after they are disconnected from power..
 	Always work in a well-ventilated space.
 	Have safety equipment such as a fire extinguisher, a first-aid kit, and a phone nearby
 	Keep your work area dry.
@@ -23,7 +22,7 @@
 	k kilo = 	1,000
 	M mega = 	1,000,000
 	G giga = 	1,000,000,000
-***Circuit Basics*** A warning: This is the meat and potatoes of electronics, but it is rarely well seasoned. I'm mostly plowing throuigh that because the goal is provide you with some practical knowledge, but the more you know, the better you will be at this stuff, and the more you'll be able to accomplish. I strongly recommend doing the work and learning the basics for yourself. At least learn DC circuit theory. It's a little boring, and some of it is kinda hard, but just work through it.
+***Circuit Basics*** A warning: This is the meat and potatoes of electronics, but it is rarely well seasoned. I'm mostly plowing through because the goal is provide you with some practical knowledge, but the more you know, the better you will be at this stuff, and the more you'll be able to accomplish. I strongly recommend doing the work and learning the basics for yourself. At least learn DC circuit theory. It's a little boring, and some of it is kinda hard, but just work through it.
 	https://www.jimfiore.org/Books.html
 	https://ibiblio.org/kuphaldt/electricCircuits/
 	https://www.allaboutcircuits.com/textbook/
@@ -34,7 +33,7 @@
 	Kirchhoff’s Voltage Law says that if you add all the voltage drops in a circuit – you get the voltage of the power supply.
 	Current - Water Volume, literally the number of electrons, measured in amps, usually not fixed, but a circuit will "draw" as much current as it needs
 	Kirchhoff’s current law says: All the current going into a node is equal to all the current that goes out from the node. - “What goes in must come out”
-	Resistance - pretty much everything has a resistance, measured in ohms Ω
+	Resistance - pretty much everything has a resistance, even wire, even batteries, measured in ohms Ω
 	AC vs DC - Bare bones, what do they look like?
 		AC is good for power transmission
 		Frequency as a general concept
@@ -52,28 +51,29 @@
 	DC power supplies - batteries for now, cheap, easy, and safe
 	DC in general is less likely to shock you. We're also focusing on stuff in the milliamp range. 1A will give you a good shock, and anything over 2A can kill.
 	Limits things like motors and "big" projects, but we'll get there.
-	we will get to AC and wall power but the focus will be on low power DC projects
+	We will get to AC and wall power but the focus will be on low power DC projects
 ***Components*** - what are they, how to read them, basic overview of them and how we'll use them
 	Series vs parallel definition
 	Through hole or DIP, SMD is the future, but they're extremely small and not beginner friendly
 	Resistors
 		Pure resistance! little pucks of stuff that conducts electricity, but not well
-		Measured in ohms milli - Mega+ are available, but BASE through Mega are most common
+		Measured in ohms milli - Giga+ are available, but BASE through Mega are most common
 		Series - additive, handle more power too
 		Parallel - if even R/# if not R = 1/R1 + 1/R2 ... not common
-		Voltage Divider - The voltage mid point of two resistors can be expressed as a percentage of the two resistors, we'll come back to these
+		Voltage Divider - The voltage mid point of two resistors can be expressed as a percentage of the two resistors, we'll come back to these R2/(R1+R2)
 		The turn electricity into heat
 		Calculate the load on a resistor in watts
 		Markings and Meanings https://www.build-electronic-circuits.com/resistor-color-codes/
 	Variable Resistors
 		Potentiometers or pots, rotary or linear, tons of different values, linear or audio taper/log, ganged and switched, usually three terminals - both ends and wiper, makes a voltage divider
+		Trimmers, basically pots but only meant to be adjusted a few times
 		Light dependant resistors, good old fun, limited
 		Many type of sensors, thermistors, flex, force, linear soft things
 	Capacitors
 		Two plates with a dielectric in-between, when one develops a charge, the other develops a negative charge
 		Measured in Farads, pico - BASE are available, but micro is most common
 		Series - they loose capacitance, it's usually a weird thing to do
-		Parallel - they add, but also not common
+		Parallel - additive, but also not common
 		Can be dangerous as they can hold a charge
 		They pass AC, but not DC
 		Common in everything, ued for filtering and keeping signals nice and clean, smoothing out ripples in current, and timing
@@ -85,9 +85,31 @@
 		For now that's mostly all we need to know about them, they come up sometimes
 		Examples include transducers, electromagnets, transformers, and filters
 		Measured in Henrys and sometimes other esoteric things
-	Switches - markings and meanings, relays
+	Switches
+		SPST - Single pole, single throw
+		SPDT - Single pole, double throw
+		DPDT - Double pole, double throw, or whatever # of poles and throws
+		NO - normally open
+		NC - normally closed
+		Momentary, and latching
+		Maximum ratings
+		Relays, a type of electrically operated switch, handy for certain large loads, can be loud
 	Wire - it can really, really matter
-	Discrete semiconductors - diodes first and use P/N explanation, LEDs, transistors: there are a lot of types, but they all pretty much work the same, MOSFET and BJT, switches and amplifiers
+		There are some special magical wires out there, but we probably won't run into most of them
+		Mostly, we'll be concerned with AWG and current handling
+		The insulation material can matter as a function of power handling
+		Stranded - flexible, good for longer runs or things that need to remain flexible, usually cheaper, lower power handling especially for DC
+		Solid - not as flexible, holds its shape, will break if bent too much, great for breadboards and DIY circuit projects, generally a little more expensive
+		Magnet wire will also come up, available in all sorts of guages, it has a very thin enamal coating
+	Discrete semiconductors
+		N - Has spare electrons - essentially "conductive"
+		P - Is said to have "holes" - essentially  "non-conductive" until a those holes get filled by applying a charge
+		If we imagine a device made up of two layers of those materials: NP first electrons won't flow, then PN and they will flow but only in one direction
+		That's a diode! Only allows current flow in one direction. Very handy in things like rectifiers and distortion pedals
+		LEDs - diodes that happen to emit light
+		Take our NP chunk, add another N on the other side - electrons can't bridge that gap, that is unless will fill those holes with our own electrons! Functionally a switch, we could probably even build in such a way that the current into the P region only needs to be very small while the other current can be very large!
+		What if, same thing but we're only turning on the P region a little bit, or varying it? It would be a small signal controlling a larger amount of power. That's the basis of amplification.
+		Transistors: there are a lot of types, but they all pretty much work the same - some are best as switches, some have a large linear region, NPN, PNP, BJT, MOSFET, N-Channel and P-Channel, IGBT, JFET
 	ICs - Basically just all of these things miniaturized and jammed into a little plastic package
 Finish with a 555 blinker on the breadboard with a ldr
 
