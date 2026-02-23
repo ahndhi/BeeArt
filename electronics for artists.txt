@@ -90,6 +90,7 @@
 		SPST - Single pole, single throw
 		SPDT - Single pole, double throw
 		DPDT - Double pole, double throw, or whatever # of poles and throws
+		If you're scrounging parts and buying weird surplus junk you'll find a lot of other types of strange switches
 		NO - normally open
 		NC - normally closed
 		Momentary, and latching
@@ -99,9 +100,9 @@
 		There are some special magical wires out there, but we probably won't run into most of them
 		Mostly, we'll be concerned with AWG and current handling
 		The insulation material can matter as a function of power handling
-		Stranded - flexible, good for longer runs or things that need to remain flexible, usually cheaper, lower power handling especially for DC
+		Stranded - flexible, good for longer runs or things that need to remain flexible, usually cheaper, lower power handling especially for DC, beware of copper clad aluminum
 		Solid - not as flexible, holds its shape, will break if bent too much, great for breadboards and DIY circuit projects, generally a little more expensive
-		Magnet wire will also come up, available in all sorts of guages, it has a very thin enamal coating
+		Magnet wire will also come up, available in all sorts of guages, it has a very thin enamal coating, sanded or burnt off
 	Discrete semiconductors
 		N - Has spare electrons - essentially "conductive"
 		P - Is said to have "holes" - essentially  "non-conductive" until a those holes get filled by applying a charge
