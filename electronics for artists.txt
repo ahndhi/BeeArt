@@ -34,6 +34,7 @@
 	Current - Water Volume, literally the number of electrons, measured in amps, usually not fixed, but a circuit will "draw" as much current as it needs
 	Kirchhoff’s current law says: All the current going into a node is equal to all the current that goes out from the node. - “What goes in must come out”
 	Resistance - pretty much everything has a resistance, even wire, even batteries, measured in ohms Ω
+	Ground - Ground is the part of the circuit with lowest potential in relation to the supply voltage, typically 0V, in our circuits that's going to be the - terminal of the battery
 	AC vs DC - Bare bones, what do they look like?
 		AC is good for power transmission
 		Frequency as a general concept
@@ -115,19 +116,26 @@ Finish with a 555 blinker on the breadboard with a ldr
 
 
 ***Circuit Basics***
-	Reading schematics
 	Bread boarding
+		Explain the basics of a bread board, and how to build circuits on it
+	Reading schematics
+		Schematic symbols
+		Translate a simple schematic to the bread board
+***LEDs***
+	Do a whole bunch - use it as a chance to discuss LED datasheet
+	Calculate a resistor for one LED
+	Voltage drop - Try them in series
+	Current consumption - Try them in parallel
 ***Power*** - DC power supplies
-	batteries - great option, cheap, plentiful, maany rechargeable options, but buy a decent charger. Battery charging can be pretty sketch, and lithium fires are no joke.
-	wall warts, these days they are switch mode power supplies - much lighter but sometimes noisey and not always good for audio
-	very common as a stage in larger circuits
-	Voltage regulators
-- Source and sink, reading data sheets
-- LEDs, blink 'em, sequence 'em, do a whole bunch, do a few, blow them up
+	Batteries - great option, cheap, plentiful, many rechargeable options, but buy a decent charger. Battery charging can be pretty sketch, and lithium fires are no joke. If you short it, the highest resistance will likely be the internal reistance of the battery and it will get hot.
+	Wall warts - Traditionally they contain a transformer, a full-bridge rectifier, and probably some smoothing caps, maybe a linear regulator. These days they are switch mode power supplies - much lighter but sometimes noisey and not always good for audio
+	Linear regulators are a type of IC that regulates the voltage of a circuit. Very handy, and they help maintain a stable voltage, otherwise it could sag under a heavy load. The 78XX family is popular. The 79XX family is for negative supplies - we'll talk more about those later. A power supply is a popular hobbyist project, usually centered around the LM317, variable voltage version.
+	DC power supplies are very common as a stage in larger circuits
+***LEDs CONT.***
+	Blink 'em - try a more complicated schematic to bread board, learn about duty cycles and calculating 555 timers
+	Sequence 'em - Pull up the 4017 datasheet and see what people can figure out
 - Other lighting - incandescent, EL and odd balls
 - Beeping buzzers
-- 4017
-- 555s, Low frequency
 
 
 ***Circuit Basics***
