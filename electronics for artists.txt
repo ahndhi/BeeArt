@@ -4,7 +4,7 @@
 	No wall power!
 	We're working with low current
 	Lead - it's honestly the best solder, also electronics in general contain a variety of heavy metals. Wash your hands.
-	Burns are possible, particulrly when soldering
+	Burns are possible, particularly when soldering
 	Never work on a circuit while power is applied.
 	Do not connect power to a circuit until the circuit is finished and you have carefully checked your work.
 	If you smell anything burning, immediately disconnect the power and examine your circuit to find out what went wrong.
@@ -22,16 +22,16 @@
 	k kilo = 	1,000
 	M mega = 	1,000,000
 	G giga = 	1,000,000,000
-***Circuit Basics*** A warning: This is the meat and potatoes of electronics, but it is rarely well seasoned. I'm mostly plowing through because the goal is provide you with some practical knowledge, but the more you know, the better you will be at this stuff, and the more you'll be able to accomplish. I strongly recommend doing the work and learning the basics for yourself. At least learn DC circuit theory. It's a little boring, and some of it is kinda hard, but just work through it.
+***Circuit Basics*** A warning: This is the meat and potatoes of electronics, but it is rarely well seasoned. I'm mostly plowing through because the goal is provide you with some practical knowledge, but the more you know, the better you will be at this stuff, and the more you'll be able to accomplish. I strongly recommend doing the work and learning the basics for yourself. At least learn DC circuit theory. It's a little boring, and some of it is kinda conceptually hard, but just work through it.
 	https://www.jimfiore.org/Books.html
 	https://ibiblio.org/kuphaldt/electricCircuits/
 	https://www.allaboutcircuits.com/textbook/
 	Circuit Sims - Falstad, easy, fun and free!
 ***What's a circuit?***
-	Requirements - Must be a circuit, work needs to be done even if it's heat, that describes the two most common problems - shorts and open circuits
-	Voltage - Water Pressure, electromotive force, measured in volts, usually somewhat fixed, an actual circuit will "drop" its voltage one way or another, as heat if nothing else
+	Requirements - Must be a circuit, there will be voltage, current, and resistance, work will be done even if it's heat, that describes the two most common problems - shorts and open circuits
+	Voltage - Water Pressure, electromotive force, measured in volts, usually somewhat fixed, an actual circuit will "drop" its voltage across a resistance one way or another, as heat if nothing else
 	Kirchhoff’s Voltage Law says that if you add all the voltage drops in a circuit – you get the voltage of the power supply.
-	Current - Water Volume, literally the number of electrons, measured in amps, usually not fixed, but a circuit will "draw" as much current as it needs
+	Current - Water Volume, literally the number of electrons, measured in amps, usually not fixed, but a circuit will "draw" as much current as it needs, or reach the limits of the materials that the circuit is made of
 	Kirchhoff’s current law says: All the current going into a node is equal to all the current that goes out from the node. - “What goes in must come out”
 	Resistance - pretty much everything has a resistance, even wire, even batteries, measured in ohms Ω
 	Ground - Ground is the part of the circuit with lowest potential in relation to the supply voltage, typically 0V, in our circuits that's going to be the - terminal of the battery
@@ -141,18 +141,31 @@ Finish with a 555 blinker on the breadboard with a ldr
 
 ***Circuit Basics***
 	Some basic circuits that come up a lot
-	Reading data sheets
-- 555 and 556 audio
-	AC vs DC - Bare bones, what do they look like?
-		AC is good for power transmission
-		Frequency hZ or cps
-		RMS
-		Phase
-		Reactance and impedence (just note they are concepts that exist)
-		Sound, but also Noise
-		The concept of zero crossing and negative voltage
-		Different waveforms
-- Noise! APC
+	Reading data sheets - 555 Monostable
+***Noise! APC***
+	Introduce the 556
+	Build an APC, and connect it to a speaker
+	Talk about Forrest Mimms
+	Build a dual 556 noise maker
+	LFO, double audio
+***AC vs DC*** Bare bones, AC is alternating current, the voltage alternates too
+	AC is good for power transmission, also it's literally noise
+	Frequency Hz or cps
+	RMS - long story short: approximately 0.7071
+	Bias - The concept of zero crossing and negatives, also current and voltage don't really do the same thing the whole time.
+	Capacitors and AC
+	Signal Types - Sine, Square, Sawtooth, Triangle - turns out that's pretty much it, the interesting ones change over time
+	loljk, it's all sine waves - what does that actually mean for us: other wave forms are a mix of frequencies and they provide interesting noises when filtered 
+	Reactance and impedence - it's complicated because it's frequency dependant - truthfully, I'm really bad at it and don't understand it fully, but we can know that capacitors are basically low pass filters, and the lower the capacitance, the lower the cutoff, inductors can work as high pass filters, but both will consume power so purely "passive" filters can kinda suck
+	Phase
+	Sound, but also Noise from other parts of the circuit, or sometimes even other circuits, things resonate at whole number fractions of their wavelength
+	Some other AC stuff, it doesn't travel through wires, but on the surface - skin effect, stranded wire is better, sort of, because it has more surface area, still lower current handling
+***Amps***
+	Classes of amps
+	Op amps
+	Transistors in audio circuits
+
+
 
 
 - PWM
@@ -161,7 +174,7 @@ Finish with a 555 blinker on the breadboard with a ldr
 - Circuit basics - reading schematics, bread boarding, and some basic circuits that come up a lot, Pre-built modules - how to find them, what are they good for
 
 
-- Noise! In a bigger way, ArtInst oscilators, contact mics, mic everything, DIY transducers, amps and classes of amp, op amps, transistors in audio circuits
+- Noise! In a bigger way, ArtInst oscilators, contact mics, mic everything, DIY transducers, 
 - analog v digital
 - They pass AC and can remove bias from a signal, however because they have reactance their "resistance" is frequency dependant, filters
 - MCUs, Arduino is a good start, ESPs are also fun, displays and other outputs, PWM i2c
