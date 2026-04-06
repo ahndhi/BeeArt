@@ -4,13 +4,15 @@
 //#include <ESP8266WiFi.h>
 //#include <espnow.h>
 
-const int myID = 22;
-
+int myID = 0;
+int sendCnt = 0;
 // REPLACE WITH RECEIVER MAC Address
 
 // TO DO!!!!!!
-uint8_t broadcastAddress1[] = {0xD8, 0xBF, 0xC0, 0x06, 0xA2, 0xA5};
-uint8_t broadcastAddress2[] = {0x3C, 0x61, 0x05, 0xDB, 0x9D, 0xFF};
+uint8_t broadcastAddress1[] = {0x1C, 0xDB, 0xD4, 0x3B, 0x20, 0x0C};
+uint8_t broadcastAddress2[] = {0x1C, 0xDB, 0xD4, 0x3B, 0x39, 0x90};
+uint8_t broadcastAddress3[] = {0x88, 0x56, 0xA6, 0x6F, 0xF4, 0x58};
+
 
 // Structure example to send data
 // Must match the receiver structure
@@ -21,10 +23,10 @@ typedef struct bee_struct {
 // Create a struct_message called test to store variables to be sent
 bee_struct myInfo;
 
-esp_now_peer_info_t peerInfo; //Exists in 32 example - purpose unclear
+esp_now_peer_info_t peerInfo; //Necessary to add the Flowers to the send list, I think.
 
 unsigned long lastTime = 0;  
-unsigned long timerDelay = 25;  // send readings timer
+unsigned long timerDelay = 50;  // send readings timer
 
 // Callback when data is sent
 void OnDataSent(uint8_t *mac_addr, uint8_t sendStatus) {
@@ -45,10 +47,10 @@ void OnDataSent(uint8_t *mac_addr, uint8_t sendStatus) {
 void setup() {
   // Init Serial Monitor
   //Serial.begin(115200);
- 
+  pinMode(1, INPUT);
   // Set device as a Wi-Fi Station
   WiFi.mode(WIFI_STA);
-  WiFi.disconnect(); //DOES NOT EXIST IN 32 Ver.
+  //WiFi.disconnect(); //DOES NOT EXIST IN 32 Ver.
 
   // Init ESP-NOW
   if (esp_now_init() != 0) {
@@ -56,7 +58,7 @@ void setup() {
     return;
   }
 
-  esp_now_set_self_role(ESP_NOW_ROLE_CONTROLLER); 
+  //esp_now_set_self_role(ESP_NOW_ROLE_CONTROLLER); 
   
   // Once ESPNow is successfully Init, we will register for Send CB to
   // get the status of Trasnmitted packet
@@ -73,20 +75,37 @@ void setup() {
   // register first peer  
   memcpy(peerInfo.peer_addr, broadcastAddress1, 6);
   if (esp_now_add_peer(&peerInfo) != ESP_OK){
-    Serial.println("Failed to add peer");
     return;
   }
+
+  // register second peer  
+  memcpy(peerInfo.peer_addr, broadcastAddress2, 6);
+  if (esp_now_add_peer(&peerInfo) != ESP_OK){
+    return;
+  }
+
+  // register third peer  
+  memcpy(peerInfo.peer_addr, broadcastAddress3, 6);
+  if (esp_now_add_peer(&peerInfo) != ESP_OK){
+    return;
+  }
+
 
 }
  
 void loop() {
-  if ((millis() - lastTime) > timerDelay) {
+  int toSend = digitalRead(1);
+  if (toSend == HIGH && sendCnt < 1){
+    myID += 1;
+    sendCnt = 50;
+  }
+  if ((millis() - lastTime) > timerDelay && sendCnt > 0) {
     // Set values to send
     myInfo.id = myID;
 
     // Send message via ESP-NOW
     esp_now_send(0, (uint8_t *) &myInfo, sizeof(myInfo));
-
+    sendCnt -= 1;
     lastTime = millis();
   }
 }

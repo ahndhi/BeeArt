@@ -5,6 +5,10 @@
 #include <esp_now.h>
 #include <WiFi.h>
 #include <map>
+#include <driver/ledc.h>
+
+
+
 
 using namespace std;
 
@@ -44,19 +48,20 @@ void setup() {
   
   // Set device as a Wi-Fi Station
   WiFi.mode(WIFI_STA);
-  WiFi.disconnect(); //NOT IN OTHER VERSION
+  //WiFi.disconnect(); //NOT IN OTHER VERSION
 
   // Init ESP-NOW
   if (esp_now_init() != 0) {
     //Serial.println("Error initializing ESP-NOW");
     return;
   }
-  pinMode(0, OUTPUT); //Was 13
+  //pinMode(0, OUTPUT); //Was 13
+  ledcAttach(0, inhFreq, 8);
   pinMode(1, INPUT); //Was 12
 
   // Once ESPNow is successfully Init, we will register for recv CB to
   // get recv packer info
-  esp_now_set_self_role(ESP_NOW_ROLE_SLAVE); //NOT IN OTHER VERSION
+  //esp_now_set_self_role(ESP_NOW_ROLE_SLAVE); //NOT IN OTHER VERSION
   esp_now_register_recv_cb(OnDataRecv);
 }
 
@@ -75,16 +80,19 @@ void loop() {
         bigMod += mod;
       }
       if (bee.first == 22) {
-        float mod = ((120.0 - inhFreq) * ((100.0 - abs(bee.second)) / 100.0));
+        float mod = ((220.0 - inhFreq) * ((100.0 - abs(bee.second)) / 100.0));
         bigMod += mod;
       }
     }
     int outFreq = inhFreq + bigMod;
-    analogWriteFreq(outFreq);
-    analogWrite(0,127);
+    //analogWriteFrequency(0,outFreq);
+    ledc_set_freq(LEDC_LOW_SPEED_MODE,LEDC_TIMER_0,outFreq);
+    //analogWrite(0,127);
+    ledcWrite(0, 127);
   } else {
     rcvBeeData.clear();
-    analogWrite(0,0);
+    //analogWrite(0,0);
+    ledcWrite(0, 0);
   }
 
 }
