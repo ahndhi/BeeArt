@@ -6,6 +6,12 @@
 unsigned long lastTime = 0;  
 unsigned long timerDelay = 50;  // Send timer
 
+bool inRange = false;
+unsigned long rangeLastTime = 0;
+unsigned long rangeTimer = 10000;
+int failCount = 0;
+int noteShot = 500;
+
 // Important
 const int myID = 11;
 
@@ -27,15 +33,19 @@ SAM sam(pwm);
 // Callback when data is sent
 void OnDataSent(uint8_t *mac_addr, uint8_t sendStatus) {
   if (sendStatus == 0){
-    //Serial.println("Delivery success");
+    inRange = true;
   }
   else{
-    //Serial.println("Delivery fail");
+    failCount += 1;
   }
 }
  
 void setup() {
   //Serial.begin(115200);
+
+  pinMode(1, INPUT); //Avoid 2, 8, 9
+  pinMode(5, OUTPUT);
+  pinMode(6, OUTPUT);
 
   
   WiFi.mode(WIFI_STA);
@@ -62,11 +72,45 @@ void setup() {
   config.bits_per_sample = 16;
   config.resolution = 8;  // must be between 8 and 11 -> drives pwm frequency (8 is default)
   config.pwm_frequency = 40000;
-  config.start_pin = 1;
+  config.start_pin = 0;
   pwm.begin(config);
+
+  delay(2500);
 }
  
 void loop() {
+  bool welcomeRst = false;
+  int welcome = digitalRead(1);
+  if (welcome == HIGH && welcomeRst == true) {
+    welcomeRst = false;
+    sam.say("Welcome Garden Explorer!");
+  }
+  if (welcome == LOW) {
+    welcomeRst = true;
+  }
+
+  if ((millis() - rangeLastTime) > rangeTimer) {
+    if (failCount >= 150) {
+      inRange = false;
+    }
+    if (inRange == true) {
+      noteShot = 0;
+      inRange = false;
+    }
+    rangeLastTime = millis();
+    failCount = 0;
+  }
+
+  if (noteShot < 500) {
+    digitalWrite(5, HIGH);
+    digitalWrite(6, HIGH);
+    noteShot += 1;
+  }
+  if (noteShot >= 500) {
+    digitalWrite(5, LOW);
+    digitalWrite(6, LOW);
+  }
+
   if ((millis() - lastTime) > timerDelay) {
     myInfo.id = myID;
     esp_now_send(0, (uint8_t *) &myInfo, sizeof(myInfo));
