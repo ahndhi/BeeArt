@@ -5,12 +5,14 @@
 
 unsigned long lastTime = 0;  
 unsigned long timerDelay = 50;  // Send timer
+bool enableTX = false;
 
 bool inRange = false;
 unsigned long rangeLastTime = 0;
 unsigned long rangeTimer = 10000;
 int failCount = 0;
 int noteShot = 500;
+bool welcomeRst = false;
 
 // Important
 const int myID = 11;
@@ -34,6 +36,7 @@ SAM sam(pwm);
 void OnDataSent(uint8_t *mac_addr, uint8_t sendStatus) {
   if (sendStatus == 0){
     inRange = true;
+    timerDelay = 50;
   }
   else{
     failCount += 1;
@@ -79,19 +82,24 @@ void setup() {
 }
  
 void loop() {
-  bool welcomeRst = false;
   int welcome = digitalRead(1);
-  if (welcome == HIGH && welcomeRst == true) {
-    welcomeRst = false;
-    sam.say("Welcome Garden Explorer!");
+  if (welcome == HIGH) {
+    enableTX = true;
+    if (welcomeRst == true) {
+      welcomeRst = false;
+      timerDelay = 500;
+      sam.say("Welcome Garden Explorer!");
+    }
   }
   if (welcome == LOW) {
+    enableTX = false;
     welcomeRst = true;
   }
 
   if ((millis() - rangeLastTime) > rangeTimer) {
     if (failCount >= 150) {
       inRange = false;
+      timerDelay = 500;
     }
     if (inRange == true) {
       noteShot = 0;
@@ -111,7 +119,7 @@ void loop() {
     digitalWrite(6, LOW);
   }
 
-  if ((millis() - lastTime) > timerDelay) {
+  if (((millis() - lastTime) > timerDelay) && enableTX == true) {
     myInfo.id = myID;
     esp_now_send(0, (uint8_t *) &myInfo, sizeof(myInfo));
     lastTime = millis();
