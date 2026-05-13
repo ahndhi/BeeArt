@@ -14,10 +14,10 @@ using namespace std;
 
 
 unsigned long lastTime = 0;  
-unsigned long timerDelay = 3000;
+unsigned long timerDelay = 300;
 bool noise = false;
 int clearCount = 0;
-const int inhFreq = 440;
+//const int inhFreq = 440;
 
 
 std::map<int, int> rcvBeeData;
@@ -56,8 +56,8 @@ void setup() {
     return;
   }
   //pinMode(0, OUTPUT); //Was 13
-  ledcAttach(0, inhFreq, 8);
-  pinMode(1, INPUT); //Was 12
+  ledcAttach(0, 40000, 8);
+  //pinMode(1, INPUT); //Was 12
 
   // Once ESPNow is successfully Init, we will register for recv CB to
   // get recv packer info
@@ -71,24 +71,14 @@ void loop() {
     clearCount = 0;
     lastTime = millis();
   }
-  int quiet = digitalRead(1);
-  if (noise == true && (rcvBeeData.size() != 0 || quiet == HIGH)) {
-    int bigMod = 0;
+  //int quiet = digitalRead(1);
+  if (noise == true && (rcvBeeData.size() != 0)) {
     for (auto bee : rcvBeeData) {
-      if (bee.first == 11) {
-        float mod = ((880.0 - inhFreq) * ((100.0 - abs(bee.second)) / 100.0));
-        bigMod += mod;
-      }
-      if (bee.first == 22) {
-        float mod = ((220.0 - inhFreq) * ((100.0 - abs(bee.second)) / 100.0));
-        bigMod += mod;
+      if (bee.second > -80) {
+        ledcWrite(0, 127);
       }
     }
-    int outFreq = inhFreq + bigMod;
-    //analogWriteFrequency(0,outFreq);
-    ledc_set_freq(LEDC_LOW_SPEED_MODE,LEDC_TIMER_0,outFreq);
-    //analogWrite(0,127);
-    ledcWrite(0, 127);
+
   } else {
     rcvBeeData.clear();
     //analogWrite(0,0);
